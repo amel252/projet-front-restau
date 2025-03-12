@@ -1,2 +1,24 @@
 @import url("/node_modules/bootstrap-icons/font/bootstrap-icons.css");
 @import "custom";
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+//comme ca mon main ne soit pas coller avec footer
+main {
+    margin-bottom: 250px;
+}
+// quand mon footer aura la class footer -> je veux 15px de padding/ avoir le footer en bas de la page , je dois mettre mon html element en relative
+footer.footer {
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+// mettre tout mes p en font hind madurai :
+p {
+    font-family: $font-family-serif;
+    font-size: 16px;
+}
