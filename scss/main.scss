@@ -25,6 +25,7 @@ p {
 }
 .hero-scene {
     position: relative;
+    margin-bottom: 15px;
     &::before {
         content: "";
         position: absolute;
@@ -75,4 +76,9 @@ p {
         left: 50%;
         transition: all 0.3s;
     }
+}
+
+//********* stylisation page Connexion
+.form-label {
+    color: $primary;
 }
