@@ -1,7 +1,7 @@
 @import url("/node_modules/bootstrap-icons/font/bootstrap-icons.css");
 @import "custom";
 
-// ********************** hom stylisation
+// ********************** home stylisation
 html {
     position: relative;
     min-height: 100%;
@@ -58,7 +58,8 @@ p {
 .image-card {
     position: relative;
     &:hover {
-        .titre-image {
+        .titre-image,
+        .action-image-buttons {
             opacity: 1;
         }
         img {
@@ -69,11 +70,22 @@ p {
         transition: all 0.3s;
     }
     .titre-image {
-        opacity: 0;
         position: absolute;
         top: 50%;
-        transform: translate(-50%, -50%);
         left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    .action-image-buttons {
+        position: absolute;
+        top: 0px;
+        left: 0;
+        width: 100%;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        opacity: 0;
         transition: all 0.3s;
     }
 }
