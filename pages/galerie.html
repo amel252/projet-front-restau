@@ -7,7 +7,14 @@
 <!-- faire la section avec mes img-->
 <div class="container">
     <div class="text-center">
-        <buttn class="btn btn-primary">Ajouter une image</buttn>
+        <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#editionPhotoModal"
+        >
+            Ajouter une image
+        </button>
     </div>
     <div class="row row-cols-2 row-cols-lg-3">
         <div class="col p-3">
@@ -15,10 +22,20 @@
                 <img src="../images/chef.jpg" class="rounded w-100" />
                 <p class="titre-image">Titre</p>
                 <div class="action-image-buttons">
-                    <button type="button" class="btn btn-outline-light">
+                    <button
+                        type="button"
+                        class="btn btn-outline-light"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editionPhotoModal"
+                    >
                         <i class="bi bi-pencil-square"></i>
                     </button>
-                    <button type="button" class="btn btn-outline-light">
+                    <button
+                        type="button"
+                        class="btn btn-outline-light"
+                        data-bs-toggle="modal"
+                        data-bs-target="#DeletePhotoModal"
+                    >
                         <i class="bi bi-trash"></i>
                     </button>
                 </div>
@@ -57,5 +74,103 @@
     </div>
     <div class="text-center">
         <a href="#" class="btn btn-primary">Réserver</a>
+    </div>
+</div>
+
+<!-- Modal -->
+<div
+    class="modal fade"
+    id="editionPhotoModal"
+    tabindex="-1"
+    aria-labelledby="editionPhotoModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="editionPhotoModalLabel">
+                    Edition Photo
+                </h2>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="namePhotolInput" class="form-label"
+                            >Titre
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="namePhotolInput"
+                            placeholder="Lasagnes à la bolognese"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="imageInput" class="form-label">Image</label>
+                        <input
+                            type="file"
+                            class="form-control"
+                            id="passwordInput"
+                        />
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">
+                            Enregistrer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Suppression -->
+<div
+    class="modal fade"
+    id="DeletePhotoModal"
+    tabindex="-1"
+    aria-labelledby="DeletePhotoModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="DeletePhotoModalLabel">
+                    etes-vous sur de vouloir supprimer cette Photo ?
+                </h2>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <p>Titre</p>
+                        <img src="../images/chef.jpg" class="rounded w-100" />
+                    </div>
+
+                    <div class="text-center">
+                        <button type="button" class="btn btn-danger">
+                            Supprimer
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Annuler
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
