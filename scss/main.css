@@ -11861,8 +11861,7 @@ footer.footer {
   width: 100%;
 }
 
-p,
-a {
+p {
   font-family: "Hind Madurai", serif;
   font-size: 16px;
 }
@@ -11936,6 +11935,7 @@ a {
 
 .allreservatios a {
   display: block;
+  font-family: "Hind Madurai", serif;
   color: #292222;
   padding: 10px;
 }/*# sourceMappingURL=main.css.map */
