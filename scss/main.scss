@@ -19,7 +19,8 @@ footer.footer {
 }
 
 // mettre tout mes p en font hind madurai :
-p {
+p,
+a {
     font-family: $font-family-serif;
     font-size: 16px;
 }
@@ -93,4 +94,13 @@ p {
 //********* stylisation page Connexion
 .form-label {
     color: $primary;
+}
+
+//** stylisation page allreservation
+.allreservatios {
+    a {
+        display: block;
+        color: $black;
+        padding: 10px;
+    }
 }
