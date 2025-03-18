@@ -6,7 +6,12 @@ export const allRoutes = [
     // je crée la route de ma page pour qu'elle s'affiche
     new Route("/galerie", "Galerie", "/pages/galerie.html"),
     new Route("/signin", "Connexion", "/pages/auth/signin.html"),
-    new Route("/signout", "Inscription", "/pages/auth/signout.html"),
+    new Route(
+        "/signout",
+        "Inscription",
+        "/pages/auth/signout.html",
+        "/js/auth/signout.js"
+    ),
     new Route("/account", "Compte", "/pages/auth/account.html"),
     new Route(
         "/editPassword",
