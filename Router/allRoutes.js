@@ -5,7 +5,12 @@ export const allRoutes = [
     new Route("/", "Acceuil", "/pages/home.html"),
     // je crée la route de ma page pour qu'elle s'affiche
     new Route("/galerie", "Galerie", "/pages/galerie.html"),
-    new Route("/signin", "Connexion", "/pages/auth/signin.html"),
+    new Route(
+        "/signin",
+        "Connexion",
+        "/pages/auth/signin.html",
+        "/js/auth/signin.js"
+    ),
     new Route(
         "/signout",
         "Inscription",
