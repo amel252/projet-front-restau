@@ -1,8 +1,10 @@
 const inputEmail = document.getElementById("emailInput");
 const inputPassword = document.getElementById("passwordInput");
+
 const btnSignin = document.getElementById("btnSignin");
 
 btnSignin.addEventListener("click", checkCredentials);
+
 function checkCredentials() {
     // Ici , il faudra appeler l'Api pour vérifier les credentials en BDD
     if (inputEmail.value == "test@mail.com" && inputPassword.value == "123") {
@@ -13,7 +15,7 @@ function checkCredentials() {
         //placer ce token en cookie
         setCookie(RoleCookieName, "admin", 7);
 
-        // rediriger l'utilisateur vers la page d'acceuil
+        // rediriger l'utilisateur vers la page d'acceuil avec  window.location.replace("/");
         window.location.replace("/");
     } else {
         inputEmail.classList.add("is-invalid");

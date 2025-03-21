@@ -1,4 +1,19 @@
 const tokenCookieName = "accesstoken";
+const RoleCookieName = "role";
+// methode de déconnexion est simple juste supp le token :
+const signoutBtn = document.getElementById("signout-btn"); // 1
+
+signoutBtn.addEventListener("click", signout); //2
+
+function getRole() {
+    return getCookie(RoleCookieName);
+}
+function signout() {
+    eraseCookie(tokenCookieName);
+    eraseCookie(RoleCookieName);
+    window.location.reload();
+}
+
 function setToken(token) {
     setCookie(tokenCookieName, token, 7);
 }
@@ -38,8 +53,40 @@ function isConnected() {
         return true;
     }
 }
-if (isConnected()) {
-    alert("je suis connecté ");
-} else {
-    alert("je ne suis pas connecté");
+
+// utilisateur disconnected
+// utilisateur (admin  ou client)
+// utilisateur (admin)
+//utilisateur client
+
+function showAndHideElementsForRoles() {
+    const userConnected = isConnected();
+    const role = getRole();
+    let allElementsToEdit = document.querySelectorAll("[data-show]");
+    allElementsToEdit.forEach((element) => {
+        // On retire d'abord la classe d-none pour un contrôle plus précis.
+        element.classList.remove("d-none");
+        switch (element.dataset.show) {
+            case "disconnected":
+                if (userConnected) {
+                    element.classList.add("d-none"); // class bootstrap display none
+                }
+                break;
+            case "connected":
+                if (!userConnected) {
+                    element.classList.add("d-none");
+                }
+                break;
+            case "admin":
+                if (!userConnected || role != "admin") {
+                    element.classList.add("d-none");
+                }
+                break;
+            case "client":
+                if (!userConnected || role != "client") {
+                    element.classList.add("d-none");
+                }
+                break;
+        }
+    });
 }

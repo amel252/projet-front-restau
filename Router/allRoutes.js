@@ -14,8 +14,8 @@ export const allRoutes = [
     new Route(
         "/signout",
         "Inscription",
-        "/pages/auth/signout.html",
-        "/js/auth/signout.js"
+        "/pages/auth/signup.html",
+        "/js/auth/signup.js"
     ),
     new Route("/account", "Compte", "/pages/auth/account.html"),
     new Route(
