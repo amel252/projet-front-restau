@@ -1,26 +1,42 @@
 const inputEmail = document.getElementById("emailInput");
 const inputPassword = document.getElementById("passwordInput");
-
 const btnSignin = document.getElementById("btnSignin");
+const signInForm = document.getElementById("signinForm");
+const apiUrl = "https://127.0.0.1/8000:api";
 
 btnSignin.addEventListener("click", checkCredentials);
 
 function checkCredentials() {
-    // Ici , il faudra appeler l'Api pour vérifier les credentials en BDD
-    if (inputEmail.value == "test@mail.com" && inputPassword.value == "123") {
-        //Il faudra récupérer le vrai token
-        const token =
-            "lkjsdngfljsqdnglkjsdbglkjqskjgkfjgbqslkfdgbskldfgdfgsdgf";
-        setToken(token);
-        //placer ce token en cookie
-        setCookie(RoleCookieName, "client", 7);
+    let dataForm = new FormData(formInscription);
 
-        // rediriger l'utilisateur vers la page d'acceuil avec  window.location.replace("/");
-        window.location.replace("/");
-    } else {
-        inputEmail.classList.add("is-invalid");
-        inputPassword.classList.add("is-invalid");
-        // Ajoutez un petit message d'erreur ou une icône pour indiquer que la saisie est incorrecte.
-        // alert("vous n'etes pas connecté ");
-    }
+    // Ici , il faudra appeler l'Api pour vérifier les credentials en BDD
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    let raw = JSON.stringify({
+        username: dataForm.get("email"),
+        password: dataForm.get("mdp"),
+    });
+    let requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+    };
+    fetch(apiUrl + "login", requestOptions)
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                inputEmail.classList.add("is-invalid");
+                inputPassword.classList.add("is-invalid");
+            }
+        })
+        .then((result) => {
+            const token = result.apiToken;
+            setToken(token);
+            //placer ce token en cookie
+            setCookie(RoleCookieName, result.roles[0], 7);
+            window.location.replace("/");
+        })
+        .catch((error) => console.log("error", error));
 }
