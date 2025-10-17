@@ -89,6 +89,8 @@ function validateRequired(input) {
 }
 
 //
+// Déclare l'URL de ton API ici, en haut du fichier
+const apiUrl = "http://localhost:8000/api"; // remplace par l'URL de ton API
 function InscrireUtilisateur() {
     let dataForm = new FormData(formInscription);
 
@@ -109,22 +111,18 @@ function InscrireUtilisateur() {
         redirect: "follow",
     };
 
-    fetch(apiUrl + "registration", requestOptions)
+    fetch(apiUrl + "/registration", requestOptions)
         .then((response) => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                alert("Erreur lors de l'inscription");
+            if (!response.ok) {
+                throw new Error("Erreur lors de l'inscription");
             }
             return response.json();
         })
         .then((result) => {
             alert(
-                alert(
-                    "Bravo " +
-                        dataForm.get("prenom") +
-                        ", vous êtes maintenant inscrit, vous pouvez vous connecter."
-                )
+                "Bravo " +
+                    dataForm.get("prenom") +
+                    ", vous êtes maintenant inscrit, vous pouvez vous connecter."
             );
             document.location.href = "/signin";
         })

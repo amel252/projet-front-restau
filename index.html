@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="scss/main.css" />
 
-
         <!-- inclure le font family avec l'url -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -63,8 +62,8 @@
                                 </a>
                             </li>
                             <li class="nav-item" data-show="connected">
-                                <button class="nav-link" id="signout-btn"
-                                    >Déconnexion
+                                <button class="nav-link" id="signout-btn">
+                                    Déconnexion
                                 </button>
                             </li>
                         </ul>
@@ -94,8 +93,12 @@
                 </div>
             </div>
         </footer>
-        <script src="/js/script.js" /></script >
-        <script type="module" src="Router/router.js"></script>
+        <!-- scripts principaux -->
+        <script src="/js/auth/session.js"></script>
+        <script src="/js/script.js"></script>
+        <!-- router.js -->
+        <script type="module" src="/Router/router.js"></script>
+        <!-- Bootstrap -->
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

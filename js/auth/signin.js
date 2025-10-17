@@ -2,7 +2,7 @@ const inputEmail = document.getElementById("emailInput");
 const inputPassword = document.getElementById("passwordInput");
 const btnSignin = document.getElementById("btnSignin");
 const signInForm = document.getElementById("signinForm");
-const apiUrl = "https://127.0.0.1/8000:api";
+const apiUrl = "http://localhost:8000/api"; // ton backend API
 
 btnSignin.addEventListener("click", checkCredentials);
 
@@ -22,7 +22,7 @@ function checkCredentials() {
         body: raw,
         redirect: "follow",
     };
-    fetch(apiUrl + "login", requestOptions)
+    fetch(apiUrl + "/login", requestOptions)
         .then((response) => {
             if (response.ok) {
                 return response.json();
