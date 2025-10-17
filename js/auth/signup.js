@@ -1,16 +1,17 @@
+import { apiUrl } from "./session.js";
 // implementer le js de ma page
 const inputNom = document.getElementById("NomInput");
 const inputPrenom = document.getElementById("PrenomInput");
-const inputEmail = document.getElementById("emailInput");
-const inputPassword = document.getElementById("passwordInput");
+const inputEmailSignup = document.getElementById("emailInput");
+const inputPasswordSignup = document.getElementById("passwordInput");
 const inputValidatePassword = document.getElementById("ValidatePasswordInput");
 const btnValidation = document.getElementById("btn-validation-inscription");
 const formInscription = document.getElementById("formulaireInscription");
 
 inputNom.addEventListener("keyup", validateForm);
 inputPrenom.addEventListener("keyup", validateForm);
-inputEmail.addEventListener("keyup", validateForm);
-inputPassword.addEventListener("keyup", validateForm);
+inputEmailSignup.addEventListener("keyup", validateForm);
+inputPasswordSignup.addEventListener("keyup", validateForm);
 inputValidatePassword.addEventListener("keyup", validateForm);
 
 btnValidation.addEventListener("click", InscrireUtilisateur);
@@ -19,10 +20,10 @@ btnValidation.addEventListener("click", InscrireUtilisateur);
 function validateForm() {
     const nomOk = validateRequired(inputNom);
     const prenomOk = validateRequired(inputPrenom);
-    const mailOk = validateMail(inputEmail);
-    const passwordOk = validatePassword(inputPassword);
+    const mailOk = validateMail(inputEmailSignup);
+    const passwordOk = validatePassword(inputPasswordSignup);
     const passwordConfirmOk = validateConfirmationPassword(
-        inputPassword,
+        inputPasswordSignup,
         inputValidatePassword
     );
     btnValidation.disabled = !(
@@ -63,9 +64,7 @@ function validatePassword(input) {
 function validateMail(input) {
     // définir mon Regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    // const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const mailUser = input.value;
-    if (mailUser.match(emailRegex)) {
+    if (input.value.match(emailRegex)) {
         input.classList.add("is-valid");
         input.classList.remove("is-invalid");
         return true;
@@ -76,7 +75,7 @@ function validateMail(input) {
     }
 }
 function validateRequired(input) {
-    if (input.value != "") {
+    if (input.value.trim() != "") {
         // is-valid et is-invalid c'est des classes bootstrap pour valider ou pas un champ
         input.classList.add("is-valid");
         input.classList.remove("is-invalid");
@@ -89,13 +88,9 @@ function validateRequired(input) {
 }
 
 //
-// Déclare l'URL de ton API ici, en haut du fichier
-const apiUrl = "http://localhost:8000/api"; // remplace par l'URL de ton API
-function InscrireUtilisateur() {
-    let dataForm = new FormData(formInscription);
-
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+function InscrireUtilisateur(e) {
+    e.preventDefault();
+    const dataForm = new FormData(formInscription);
 
     let raw = JSON.stringify({
         firstName: dataForm.get("nom"),
@@ -104,14 +99,11 @@ function InscrireUtilisateur() {
         password: dataForm.get("mdp"),
     });
 
-    const requestOptions = {
+    fetch(apiUrl + "/registration", {
         method: "POST",
-        headers: myHeaders,
+        headers: ("Content-Type", "application/json"),
         body: raw,
-        redirect: "follow",
-    };
-
-    fetch(apiUrl + "/registration", requestOptions)
+    })
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Erreur lors de l'inscription");
