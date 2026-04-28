@@ -3,68 +3,35 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="scss/main.css" />
-
-        <!-- inclure le font family avec l'url -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400&display=swap"
             rel="stylesheet"
         />
+        <link rel="stylesheet" href="/scss/css/main.css" />
         <title>Quai Antique</title>
     </head>
     <body>
         <header>
-            <!--Faire le navbar -->
             <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-                <!-- bg-dark va récuperer le dark dans mon _custom -->
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">Quai Antique </a>
-                    <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"aria-controls="navbarSupportedContent" 
+                    aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div
-                        class="collapse navbar-collapse"
-                        id="navbarSupportedContent"
-                    >
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Acceuil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/galerie">Galerie</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">La carte </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/allResarvation"
-                                    >Les réservations
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/account"
-                                    >Mon compte
-                                </a>
-                            </li>
-                            <li class="nav-item" data-show="disconnected">
-                                <a class="nav-link" href="/signin"
-                                    >Connexion
-                                </a>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="/">Acceuil</a></li>
+                            <li class="nav-item"><a class="nav-link" href="pages/galerie.html">Galerie</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">La carte </a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pages/reservation/allResarv.html">Les réservations</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pages/auth/account.html">Mon compte</a></li>
+                            <li class="nav-item" data-show="disconnected"><a class="nav-link" href="/signin">Connexion</a></li>
                             <li class="nav-item" data-show="connected">
-                                <button class="nav-link" id="signout-btn">
-                                    Déconnexion
-                                </button>
+                                <button class="nav-link" id="signout-btn">Déconnexion</button>
                             </li>
                         </ul>
                     </div>
@@ -94,10 +61,9 @@
             </div>
         </footer>
         <!-- scripts principaux -->
-        <script src="/js/auth/session.js"></script>
-        <script src="/js/script.js"></script>
+        <script type="module" src="/js/script.js"></script>
         <!-- router.js -->
-        <script type="module" src="/Router/router.js"></script>
+        <!-- <script type="module" src="/Router/router.js"></script> -->
         <!-- Bootstrap -->
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </body>

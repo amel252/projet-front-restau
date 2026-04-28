@@ -1,16 +1,20 @@
 {
-  "name": "projet-front-restau",
-  "version": "1.0.0",
-  "description": "ce site un site vitrine pour le restaurant Quai antique",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3"
-  }
+    "name": "projet-front-restau",
+    "version": "1.0.0",
+    "description": "ce site un site vitrine pour le restaurant Quai antique",
+    "main": "index.js",
+    "scripts": {
+        "dev": "sass --watch scss/main.scss:scss/css/main.css --load-path=node_modules",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bootstrap": "^5.3.8",
+        "bootstrap-icons": "^1.13.1"
+    },
+    "devDependencies": {
+        "sass": "^1.99.0"
+    }
 }
